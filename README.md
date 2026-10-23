@@ -22,7 +22,7 @@ This is a condensed version of LangChain Academy, intended to be run in a sessio
 - **email_agent.ipynb**: Build a stateful email triage and response agent
 - **multi_agent.ipynb**: Multi-agent systems with supervisors and specialized sub-agents
 - **research_agent.ipynb**: Deep research agent with parallel sub-researchers
-- **deepagents.ipynb**: Build a research agent from scratch with DeepAgents -- covers AGENTS.md, skills, backends, long-term memory, HITL, and more
+- **deep_agents.ipynb**: Build a research agent from scratch with DeepAgents -- covers AGENTS.md, skills, backends, long-term memory, HITL, and more
 
 ### Agents (`agents/`)
 Standalone agent implementations that run in LangGraph Studio via `langgraph dev`:
@@ -84,8 +84,13 @@ git clone https://github.com/langchain-ai/langgraph-101.git
 ```
 
 
-### Create an environment 
-Ensure you have a recent version of pip and python installed
+### Requirements
+- Python 3.13 (`.python-version`; `pyproject.toml` requires >=3.11), `uv`, and Git
+- Internet access (LLM APIs, Tavily, and a one-time Chinook sample DB download in `multi_agent.ipynb`)
+- API keys in `.env`: `OPENAI_API_KEY` (required), `TAVILY_API_KEY` (required for the deep agents notebooks), `LANGSMITH_API_KEY` (required for the evaluations in `multi_agent.ipynb`, optional elsewhere)
+- Exact package versions are pinned in `uv.lock`
+
+### Create an environment
 ```
 $ cd langgraph-101
 # Copy the .env.example file to .env
@@ -132,7 +137,7 @@ This repository uses a **centralized utils module** (`utils/`) to avoid code dup
 - **`utils/models.py`** - LLM model initialization (OpenAI, Anthropic, Azure, Bedrock, Vertex AI)
 - **`utils/utils.py`** - Shared utility functions (`show_graph`, `get_engine_for_chinook_db`)
 
-**Default**: OpenAI with `o3-mini` model. To switch providers, edit `utils/models.py` following the instructions below.
+**Default**: OpenAI with the `gpt-4.1-mini` model (Anthropic is available as a commented-out alternative). To switch providers, edit `utils/models.py` following the instructions below.
 
 **Note**: Notebooks automatically add the project root to Python's path, so they can import from `utils` regardless of which subdirectory they're in.
 
