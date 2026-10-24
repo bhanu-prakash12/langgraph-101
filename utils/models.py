@@ -22,10 +22,10 @@ from langchain.chat_models import init_chat_model
 
 
 # ---- Default Models -------------------------------------------------------
-# model = init_chat_model("openai:gpt-4.1-mini")
+model = init_chat_model("openai:gpt-4.1-mini")
 
 # Use Anthropic by default
-model = init_chat_model("anthropic:claude-haiku-4-5")
+# model = init_chat_model("anthropic:claude-haiku-4-5")
 
 
 # ---- Azure OpenAI ---------------------------------------------------------
